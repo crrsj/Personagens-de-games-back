@@ -1,5 +1,15 @@
 package br.com.personagem.dto;
 
-public record PersonagemDto(String url,String nome,String game,String plataforma) {
+import jakarta.validation.constraints.NotBlank;
+
+public record PersonagemDto(
+		@NotBlank(message = "Não pode estar em branco.") 
+		String url,
+		@NotBlank(message = "Não pode estar em branco.") 
+        String nome,
+		@NotBlank(message = "Não pode estar em branco.") 
+        String game,
+		@NotBlank(message = "Não pode estar em branco.")  
+		String plataforma) {
 
 }

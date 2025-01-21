@@ -21,6 +21,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -37,7 +38,7 @@ public class PersonagemControle {
     @ApiResponse(responseCode = "201",description = " sucesso",content = {
    	@Content(mediaType = "application.json",schema = @Schema(implementation = ResponseEntity.class))
     })          
-	public ResponseEntity<Personagem>cadastarPersonagem(@RequestBody PersonagemDto personagemDto){
+	public ResponseEntity<Personagem>cadastarPersonagem(@RequestBody @Valid PersonagemDto personagemDto){
 		var cadastrar = servico.cadastrarPersonagem(personagemDto);
 		return new ResponseEntity<>(cadastrar,HttpStatus.CREATED);
 	}
